@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import store from './redux/store';
 import { Provider } from 'react-redux';
 import { lazy } from 'react';
+import Users from './pages/users/Users';
 
 const List = lazy(()=> import('./pages/list/List'));
 
@@ -30,6 +31,7 @@ function App() {
               <Route path="/" element={<Layout/>}>
                 <Route index element={<Home/>}></Route>
                 <Route path="/list" element={<List/>}></Route>
+                <Route path="/users" element={<Users/>}></Route>
               </Route>
             </Routes>
           </Router>
