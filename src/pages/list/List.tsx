@@ -19,6 +19,25 @@ function List() {
 
   const[text, setText]= useState<string>('');
 
+  const numbers = [4, 2, 7, 2, 9, 4, 2, 7, 4, 4];
+
+  function findMostFrequent(arr:any) {
+    const frequency:any = {};
+    let maxCount = 0;
+    let mostFrequent = null;
+
+    for (let num of arr) {
+      frequency[num] = (frequency[num] || 0) + 1;
+
+      if (frequency[num] > maxCount) {
+        maxCount = frequency[num];
+        mostFrequent = num;
+      }
+    }
+
+    return mostFrequent;
+  }
+
   useEffect(() => {
     const fetchData = async () => {
         const result: any = await api.get('/users');
@@ -26,6 +45,9 @@ function List() {
         setUserData(()=> result.data);
     };
     fetchData();
+
+    const result = findMostFrequent(numbers);
+    console.log(result);    
 }, []);
 
 if(!userData || userData?.length == 0)
